@@ -13,7 +13,7 @@
     font-weight: normal;
     font-style: normal;
 	}
-	body {font-family: 'HSGyoulnoonkot';}
+	body {font-family: 'HSGyoulnoonkot';background-image : url("resources/Main1img/한지.png");}
 	
 	/*텍스트*/	
 	.text .title {font-size: 100px; position: absolute; top: 175px; left: 330px;}
@@ -34,7 +34,7 @@
 					
 	
 	/*배너*/
-	* {margin:0;padding:0;background-color:#FFE4B5;}
+	* {margin:0;padding:0;}
 	.section input[id*="slide"] {display:none;}
 	.section .slidewrap {max-width:1000px; position: absolute; bottom: 50px; right: 125px;}
 	.section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;position:relative;}
@@ -106,7 +106,6 @@
 	<p class="detail"> 	공간의 가치를 담은<br>
 						안락한 '맛의 무릉도원'<br>
 						3대째 이어져 오는 고급한정식</p>	
-	<p class="notice">*화살표 혹은 하단 버튼 클릭 시 이미지가 바뀝니다.</p>	
 	<a class="button" onclick="goReplace('./.jsp')">예약하기</a>
 </div>
 
