@@ -8,9 +8,9 @@
 </head>
 <body>
 <header><%@ include file="top.jsp" %></header>
-<section>
+<div>
 	<%@ include file="Main1.jsp" %>
-</section>
+</div>
 <footer><%@ include file="footer.jsp" %></footer>
 </body>
 </html> 

@@ -16,17 +16,17 @@
 	body {font-family: 'HSGyoulnoonkot';background-image : url("resources/Main1img/한지.png");}
 	
 	/*텍스트*/	
-	.text .title {font-size: 100px; position: absolute; top: 175px; left: 330px;}
-	.text .detail{font-size: 30px; text-align: center; position: absolute; top: 350px; left: 250px;}
-	.text .notice{font-size: 20px; color: red; position: absolute; top: 86px; left: 1350px;}
+	.text .title {font-size: 100px; position: relative; top: 175px; left: 330px;}
+	.text .detail{font-size: 30px; text-align: center; position: relative; top: 350px; left: 250px;}
+	.text .notice{font-size: 20px; color: red; position: relative; top: 86px; left: 1350px;}
 	
 	/*'예약하기' 버튼*/
 	.button {display: inline-block;background-color: #999; color: #fff;
 			width: 350px; height: 54px;text-align: center; font-size: 30px; 
-			position: absolute; top: 550px; left: 275px;line-height: 54px; outline: none;}
+			position: relative; top: 550px; left: 275px;line-height: 54px; outline: none;}
 	.button:hover {background-color: #CCC;}
 	.button::before,
-	.button::after {position: absolute;z-index: -1;display: block;content: '';}
+	.button::after {position: relative;z-index: -1;display: block;content: '';}
 	.button,
 	.button::before,
 	.button::after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;
@@ -36,13 +36,13 @@
 	/*배너*/
 	* {margin:0;padding:0;}
 	.section input[id*="slide"] {display:none;}
-	.section .slidewrap {max-width:1000px; position: absolute; bottom: 50px; right: 125px;}
+	.section .slidewrap {max-width:1000px; position: relative; bottom: 50px; right: 125px;}
 	.section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;position:relative;}
 	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
 	.section .slidelist > li > a {display:block;position:relative;}
 	.section .slidelist > li > a img {width:100%;}
-	.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
-	.section .slidelist .textbox {position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
+	.section .slidelist label {position:relative;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
+	.section .slidelist .textbox {position:relative;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%);line-height:1.6;text-align:center;}
 	
 	/* input에 체크되면 슬라이드 효과 */
 	.section input[id="slide01"]:checked ~ .slidewrap .slidelist > li {transform:translateX(0%);}

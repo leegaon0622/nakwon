@@ -3,6 +3,15 @@
 <html>
 <head>
 <style>
+@font-face {
+    font-family: 'HSGyoulnoonkot';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSGyoulnoonkot.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ul, li, div{
+	font-family: 'HSGyoulnoonkot';
+}
 li{
    list-style: none;
    margin-bottom: 10px;
@@ -21,7 +30,7 @@ ul{
    width: 100%
    margin: 0 auto;
    padding-bottom: 30px;
-   background-color: #FFE4B5;
+   background-color: #fce8c5;
    color: #2a2a2a;
    }
 #footer-wrap .footer-content-wrap{
@@ -33,6 +42,7 @@ ul{
    }
 #footer-wrap .footer-content-wrap .footer-content-left{
    width: 440px;
+   text-align: center;
    }
 #footer-wrap .footer-content-wrap .footer-content-center{
    width: 390px;
@@ -57,6 +67,7 @@ div.title{
    }
 .text-wrap .left{
    width: 60px;
+   margin-left:50px;
    }
 .text-wrap .left, #footer-wrap .footer-content-wrap .footer-content, .text-wrap .right{
    float: left;
@@ -79,7 +90,7 @@ div.title{
 <div id="footer-wrap">
    <div class="footer-content-wrap clearfix">
       <div class="footer-content footer-content-left">
-      <div class="title">연락망</div>
+      <div class="title">연락처 & 위치</div>
       <ul class="text-wrap">
          <li class="phone clearfix">
             <div class="left">Phone</div>
