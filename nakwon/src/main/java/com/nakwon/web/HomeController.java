@@ -45,7 +45,7 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "project/main/main";
+		return "project/manager/managerMain";
 	}
 	
 	//로그인 페이지 진입

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>낙원 관리자 페이지</title>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <style>
 	/*폰트*/
 	@font-face {
@@ -14,55 +14,25 @@
     font-weight: normal;
     font-style: normal;
 	}
+	
 	body {font-family: 'HSGyoulnoonkot';}
-
-	$ease_out: cubic-bezier(0.165, 0.84, 0.44, 1);
-
-@mixin transition() {
-    transition: 700ms $ease_out;
-
-    &:hover{
-        transition: 400ms $ease_out;
-    }
-}
-
-*, *:before, *:after {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.gradient-btn{
-  display: inline-block;
-    padding: 1em 2em;
-    border-radius: 0;
-  color: #b2876f;
-    margin-top:2rem;
-    font-weight: bold;
-    font-size: 0.678rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-  background: linear-gradient(to right, rgba(#b2876f, 0) 25%, rgba(#b2876f, .8) 75%);
-  background-position: 1% 50%;
-  background-size: 400% 300%;
-  border: 1px solid #b2876f;
-  @include transition;
-  
-  &:hover{
-    color: white;
-      color: #fff;
-      background-position: 99% 50%;
-  }
-}
+	
+	.btn01{ width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 75px; margin-left: 325px; position: absolute;}			
+	.btn02{	width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 75px; margin-left: 975px; }			
+	.btn03{	width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 50px; margin-left: 325px; }			
+	.btn04{	width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 50px; margin-left: 50px; position: absolute;}
+	
 </style>
-
 </head>
 <body>
 <header><%@ include file="top.jsp" %></header>
 <section>
 <div class="wrap">
-    <a class="btn01" href="#">Gradient</a>
+   <button type="button" class="btn01 btn-outline-primary">소개</button>
+   <button type="button" class="btn02 btn-outline-primary">메뉴</button>
+   <button type="button" class="btn03 btn-outline-primary">예약</button>
+   <button type="button" class="btn04 btn-outline-primary">게시판</button>
+   <br><br><br><br>
 </div>
 </section>
 <footer><%@ include file="footer.jsp" %></footer>
