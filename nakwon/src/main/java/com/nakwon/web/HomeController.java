@@ -80,4 +80,10 @@ public class HomeController {
 		return "project/manager/managerMain";
 	}
 	
+	//로그인 페이지 진입
+		@RequestMapping(value = "/location", method = RequestMethod.GET)
+		public String location() {
+			return "project/location/location";
+		}
+	
 }
