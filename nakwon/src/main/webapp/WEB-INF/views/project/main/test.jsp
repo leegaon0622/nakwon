@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <link rel="stylesheet" type="text/css" href="resource/css/fullPage.css">
+   <link rel="stylesheet" type="text/css" href="resources/css/fullPage.css">
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,26 +8,31 @@
 <title>낙원</title>
 </head>
 <style>
-	html, body {width: 100%; height: 100%;}
-	.content{
-    height: 100vh;
+html{overflow: hidden;}
+ 
+html, body{width: 100%; height: 100%;}
+ 
+.content{
+	width: 100%; height: 100%;
+	background-color: blueviolet;
+	
+	position: relative;
 }
-</style>
-<script src="resources/js/jquery.fullPage.js">
-$('#fullpage').fullpage({
-    slidesNavigation: true,
-    responsiveWidth: 1024,
-    autoScrolling: true
-});
+.content:nth-child(even){background-color: #333;}
 
+</style>
+
+<script src="resources/js/jquery.fullPage.js">
 window.addEventListener("wheel", function(e){
 	e.preventDefault();
 },{passive : false});
 
 var $html = $("html");
-var page = 1;
-var lastPage = $(".content").length;
 
+var page = 1;
+ 
+var lastPage = $(".content").length;
+ 
 $html.animate({scrollTop:0},10);
 
 $(window).on("wheel", function(e){
