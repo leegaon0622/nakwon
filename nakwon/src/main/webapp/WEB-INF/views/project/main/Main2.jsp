@@ -19,8 +19,8 @@
 	/*텍스트*/
 	.text .title {font-size: 80px; position: absolute; top:35px; left: 35%;}
 	.text .img1{position: absolute; top:250px; left: 400px;}
-	.text .img2{position: absolute; top:325px; left: 800px;}
-	.text .img3{position: absolute; top:250px; left: 1200px;}
+	.text .img2{position: absolute;top:325px; left: 800px;}
+	.text .img3{position: absolute;top:250px; left: 1200px;}
 	
 	/*'메뉴 더보기' 버튼*/
 	.button {display: inline-block;background-color: #999; color: #fff;
@@ -41,7 +41,7 @@
 <div class="text">
 	<p class="title"> 낙원의 대표 메뉴 </p>
 	
-	<ul>
+	<ul class="img">
 		<li class="img1"><img src="resources/Main2img/코다리정식.png" width="350px" height="500px"></li>
 		<li class="img2"><img src="resources/Main2img/낙원비빔밥.png" width="350px" height="500px"></li>
 		<li class="img3"><img src="resources/Main2img/화랑부대찌개.png" width="350px" height="500px"></li>

@@ -27,6 +27,7 @@
    margin:0 40px;
    font-size:20px;
    font-family:'HSGyoulnoonkot';
+   width: 100px;
 }
 .topli a{
    color:black;
@@ -37,9 +38,9 @@
 <div class="topdiv">
 <ul class="topul">
 <li class="topli"><a href=#>소개</a></li>
-<li class="topli"><a href=#>메뉴</a></li>
-<li class="topli"><a href=#>예약</a></li>
-<li class="topli"><a href="#" onclick="location.href='http://localhost:8031/login'"><img src="resources/img/logo.png"  width="100" height="100"></a></li>
+<li class="topli"><a href="#" onclick="location.href='httpL//localhost:8031/Main1'">메뉴</a></li>
+<li class="topli"><a href="#" onClick="location.href='http://localhost:8031/reservationMain'">예약</a></li>
+<li class="topli"><a href="#" onclick="location.href='http://localhost:8031/main'"><img src="resources/img/logo.png"  width="100" height="100"></a></li>
 <li class="topli"><a href="#" onclick="location.href='http://localhost:8031/location'">오시는 길</a></li>
 <li class="topli"><a href=#>고객의 소리</a></li>
 <li class="topli"><a href=#>공지</a></li>
