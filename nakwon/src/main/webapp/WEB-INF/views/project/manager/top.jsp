@@ -8,16 +8,19 @@
 </head>
 <style>
 @font-face {
-    font-family: 'HSGyoulnoonkot';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSGyoulnoonkot.woff') format('woff');
+    font-family: 'Yeon Sung', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap') ;
     font-weight: normal;
     font-style: normal;
-}
-body {font-family: 'HSGyoulnoonkot';}
-.div {background-color:#A4A4A4; height: 140px; line-height : 25px;}
-.title{	color: #0D47A1; text-align: center; font-size: 75px;}
+	}
+	
+	body {font-family: 'Yeon Sung', cursive; font-color: #0D47A1;}
+	
+	.top { background-color:#A4A4A4; top: 0px; height: 150px; line-height: 15px; text-align: center;}
+	.title{color: #0D47A1; font-size: 75px;}
+
 </style>
-<body>
-<div class="div"><p class="title"><br><br> 낙원 관리자 페이지</p></div>
+<body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+<div class="top"><a class="title"><br><br> 낙원 관리자 페이지</a></div>
 </body>
 </html> 

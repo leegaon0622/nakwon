@@ -3,12 +3,12 @@ package com.nakwon.service;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.nakwon.domain.ReservationVO;
-import com.nakwon.persistence.ReservationDAO;
+import com.nakwon.persistence.ReservationHoldDAO;
 
 @Service
-public class ReservationServiceImpl implements ReservationService {
+public class ReservationHoldServiceImpl implements ReservationHoldService {
 	@Inject
-	ReservationDAO dao;
+	ReservationHoldDAO dao;
 	
 	@Override
 	public void insertReservation(ReservationVO vo) throws Exception{

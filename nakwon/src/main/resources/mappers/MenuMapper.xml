@@ -14,5 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select *
 	from Menu
 	]]>
-</select>
+	</select>
+	
+	<select id="menuCodeListAll" parameterType="String" resultType="com.nakwon.domain.MenuVO">
+	<![CDATA[
+	select *
+	from Menu
+	where Code = #{Code}
+	]]>
+	</select>
 </mapper>

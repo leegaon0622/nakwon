@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.nakwon.domain.ReservationVO;
-import com.nakwon.persistence.ReservationDAO;
+import com.nakwon.persistence.ReservationHoldDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(
@@ -15,7 +15,7 @@ import com.nakwon.persistence.ReservationDAO;
 
 public class ReservationDAOTest {
 	@Inject
-	private ReservationDAO dao;
+	private ReservationHoldDAO dao;
 	
 	@Test
 	public void insertReservation() throws Exception {

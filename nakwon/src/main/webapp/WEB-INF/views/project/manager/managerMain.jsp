@@ -5,35 +5,52 @@
 <head>
 <meta charset="UTF-8">
 <title>낙원 관리자 페이지</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <style>
 	/*폰트*/
 	@font-face {
-    font-family: 'HSGyoulnoonkot';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSGyoulnoonkot.woff') format('woff');
+    font-family: 'Yeon Sung', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap') ;
     font-weight: normal;
     font-style: normal;
 	}
 	
-	body {font-family: 'HSGyoulnoonkot';}
+	body {font-family: 'Yeon Sung', cursive; font-color: #0D47A1;}
 	
-	.btn01{ width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 75px; margin-left: 325px; position: absolute;}			
-	.btn02{	width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 75px; margin-left: 975px; }			
-	.btn03{	width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 50px; margin-left: 325px; }			
-	.btn04{	width: 600px; height: 300px; text-align: center; font-size: 100px; margin-top: 50px; margin-left: 50px; position: absolute;}
+	.wrap button{
+		font-family: 'Yeon Sung', cursive;
+		border: 10px solid #0D47A1;
+		background-color: white;
+		color:#0D47A1;
+		padding 5px;
+	}
+	
+	.wrap button:hover{
+		color: white;
+		background-color: #0D47A1;
+	}
+	
+	.btn01{ border-radius:25px; width: 600px; height: 300px; text-align: center; font-size: 100px; 
+	  margin-top: 75px; margin-left: 325px; position: absolute;}			
+	.btn02{	border-radius:25px; width: 600px; height: 300px; 
+	 text-align: center; font-size: 100px; margin-top: 75px; margin-left: 975px; }			
+	.btn03{ border-radius:25px;	width: 600px; height: 300px; 
+	 text-align: center; font-size: 100px; margin-top: 50px; margin-left: 325px; }			
+	.btn04{	border-radius:25px; width: 600px; height: 300px; text-align: center; font-size: 100px; 
+	   margin-top: 50px; margin-left: 50px; position: absolute;}
 	
 </style>
 </head>
-<body>
+<body  topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
 <header><%@ include file="top.jsp" %></header>
+
 <section>
 <div class="wrap">
-   <button type="button" class="btn01 btn-outline-primary">소개</button>
-   <button type="button" class="btn02 btn-outline-primary">메뉴</button>
-   <button type="button" class="btn03 btn-outline-primary">예약</button>
-   <button type="button" class="btn04 btn-outline-primary">게시판</button>
-   <br><br><br><br>
+   <button type="button" class="btn01">소개</button>
+   <button type="button" class="btn02">메뉴</button>
+   <button type="button" class="btn03">예약</button>
+   <button type="button" class="btn04">게시판</button>
 </div>
+<br><br>
 </section>
 <footer><%@ include file="footer.jsp" %></footer>
 </body>

@@ -12,7 +12,7 @@ public class MenuVO {
 	private String MenuPrice;
 	private String MenuIngredients;
 	private String MenuAllergy;
-
+	
 	@Override
 	public String toString() {
 		return "MenuVO [Code=" + Code + ", MenuCode=" + MenuCode + ", MenuCodeName=" + MenuCodeName
@@ -21,7 +21,7 @@ public class MenuVO {
 				+ MenuIngredients + ", MenuAllergy=" + MenuAllergy + "]";
 	}
 
-
+	
 	public String getCode() {
 		return Code;
 	}

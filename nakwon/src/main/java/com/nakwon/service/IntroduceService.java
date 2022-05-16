@@ -1,7 +1,7 @@
-package com.nakwon.persistence;
+package com.nakwon.service;
 
 import com.nakwon.domain.IntroduceVO;
 
-public interface IntroduceDAO {
+public interface IntroduceService {
 	public void insert(IntroduceVO vo) throws Exception;
 }

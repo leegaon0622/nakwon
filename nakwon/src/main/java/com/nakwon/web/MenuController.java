@@ -14,19 +14,27 @@ public class MenuController {
 	@Inject
 	private MenuService menuservice;
 	
-	//¸Þ´ºµî·Ï GET
+	//�޴� ��� GET
 	@RequestMapping(value="/menuAdd", method=RequestMethod.GET)
-	public String menuAddGET(MenuVO vo, Model model) {
+	public void menuAddGET(MenuVO vo, Model model) throws Exception{
 		System.out.println("MenuVO GET Called");
-		return "/project/manager/menu/menuAdd";
+		model.addAttribute("list", menuservice.menuListAll());
+		
 	}
 	
-	//¸Þ´ºµî·Ï POST
+	//�޴� ��� POST
 	@RequestMapping(value="/menuAdd", method=RequestMethod.POST)
 	public void menuAddPOST(MenuVO vo, Model model) throws Exception {
 		System.out.println("MenuVO POST Called");
 		menuservice.insert(vo);
 	}
 	
+	@RequestMapping(value="/read", method=RequestMethod.GET)
+	public void read(Model model) 
+			throws Exception{
+		System.out.println("Read Called");
+		model.addAttribute("list", menuservice.menuListAll());
+		/* menuservice.menuListAll(); */
+	}
 	
 }
