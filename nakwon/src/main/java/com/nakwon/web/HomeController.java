@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.nakwon.domain.ManagerVO;
 import com.nakwon.domain.MenuVO;
 import com.nakwon.domain.ReservationVO;
+import com.nakwon.service.IntroduceService;
 import com.nakwon.service.ManagerService;
 import com.nakwon.service.MenuService;
 import com.nakwon.service.ReservationHoldService;
@@ -33,13 +34,13 @@ import com.nakwon.service.ReservationHoldService;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
+	
 	@Inject
 	private ManagerService service;
 
 	@Inject
 	private MenuService menuservice;
-
+	
 	@Inject
 	private ReservationHoldService reservationholdservice;
 
@@ -57,7 +58,7 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 
-		return "project/manager/managerMain";
+		return "project/manager/menu/menuAdd";
 	}
 
 	// 관리자 로그인 mapping
@@ -147,13 +148,15 @@ public class HomeController {
 		
 		try {
 			ReservationVO rsrv = new ReservationVO();
+			System.out.println(request.getParameter("rsrvCode"));
 			rsrv.setRsrvCode(request.getParameter("rsrvCode"));
+			System.out.println(rsrv.getCode());
 			rsrv.setName(request.getParameter("name"));
 			rsrv.setPhone(request.getParameter("phone"));
 			rsrv.setEmail(request.getParameter("email"));
 			
 			//문자열 -> 시간으로 변환
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm"); //날짜 format
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH : mm"); //날짜 format
 			Date date = format.parse(request.getParameter("rsrvDate")); //문자열 -> Date타입으로 변경
 			Timestamp timestamp = new Timestamp(date.getTime()); //Date -> TimeStamp타입으로 변경
 			rsrv.setRsvDate(timestamp);

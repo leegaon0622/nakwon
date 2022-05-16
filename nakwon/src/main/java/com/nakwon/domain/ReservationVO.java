@@ -73,4 +73,11 @@ public class ReservationVO {
 				+ ", RsvDate=" + RsvDate + ", Pnum=" + Pnum + ", Message=" + Message + ", Code=" + Code + ", MenuCode="
 				+ MenuCode + "]";
 	}
+	public ReservationVO() {
+		super();
+		/*
+		 * RsrvCode = rsrvCode; Phone = phone; Name = name; Email = email; RsvDate =
+		 * rsvDate; Pnum = pnum; Message = message; Code = code; MenuCode = menuCode;
+		 */
+	}
 }
