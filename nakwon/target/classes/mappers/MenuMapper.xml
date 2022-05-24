@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.nakwon.mapper.MenuMapper">
 	<insert id="insert">
 		insert into Menu (Code, CodeName, MenuCode, MenuCodeName, MenuDetailCode, MenuDetailCodeName, MenuContent, MenuImg, MenuPrice, MenuIngredients, MenuAllergy)
-		values(#{Code}, #{CodeName}, #{MenuCode}, #{MenuCodeName}, #{MenuDetailCode}, #{MenuDetailCodeName}, #{MenuContent},#{MenuImg},#{MenuPrice},#{MenuIngredients},#{MenuAllergy})
+		values(#{Code}, #{CodeName}, #{MenuCode}, #{MenuCodeName}, #{MenuDetailCode}, #{MenuDetailCodeName}, #{MenuContent}, #{MenuImg}, #{MenuPrice}, #{MenuIngredients}, #{MenuAllergy})
 	</insert>
 	
 	<select id="menuListAll" resultType="com.nakwon.domain.MenuVO">

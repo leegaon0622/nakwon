@@ -17,4 +17,9 @@ public class IntroduceDAOImpl implements IntroduceDAO{
 	public void insert(IntroduceVO vo) throws Exception {
 		sqlSession.insert(namespace+".insert",vo);
 	}
+	
+	@Override
+	public List<IntroduceVO> introduceListAll()throws Exception {
+		return sqlSession.selectList(namespace+".introduceListAll");
+	}
 } 

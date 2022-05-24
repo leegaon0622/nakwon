@@ -26,6 +26,6 @@ public class ReservationDAOTest {
 		vo.setPnum(1);
 		vo.setMessage("¾È³ç¾È³ç¾È³ç");
 		
-		dao.insertReservation(vo);
+		dao.insertReservationHold(vo);
 	}
 }

@@ -4,7 +4,7 @@ public class IntroduceVO {
 	private int IntroCode; 
 	private String IntroTitle;
 	private String IntroContent;
-	private String IntroImg;
+	private String IntroImg;	
 	
 	@Override
 	public String toString() {

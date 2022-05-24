@@ -10,4 +10,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{IntroCode}, #{IntroTitle}, #{IntroContent}, #{IntroImg})
 	</insert>
 	
+	<select id="introduceListAll" resultType="com.nakwon.domain.IntroduceVO">
+	<![CDATA[
+	select *
+	from Introduce
+	]]>
+	</select>	
 </mapper>
