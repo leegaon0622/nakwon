@@ -39,22 +39,22 @@ textarea { width: 70%;height: 20px;border: none;background-color: #ededed;border
 margin-top:10px;vertical-align:top;}
 #label { text-align:center; width:100px; height:20px;margin-top: 20px;  float:left;} 
 #label1 { text-align:center;width:100px;height:20px; margin-top: 20px;  float:left;} 
-/* #MenuImg {display:none;} */
+#MenuImg {display:none;}
 #labelImg{font-size: 2rem;text-align:center;width:100px;height:20px;margin-top: 20px;  float:left;cursor: pointer;}
 </style>
 
 <body class="menubody">
-<form class="menuAdd" id="menuAddform" name="menuAddform" method="post" accept-charset="utf-8" action="menucheck.do" >
+<form class="menuAdd" id="menuAddform" name="menuAddform" method="post" accept-charset="utf-8">
 	<div class="wrap">
 		<!-- <a href="#add_menu" class="btn_add">메뉴 등록</a> 얘 없앨거임 -->
 		<button type="button" id="open" class="btn_add">메뉴 등록</button>
 		<div id="add_menu" class="menu" style="display:none;">
-	
+
 		<div class="inner">
-		
+
 		<button type="button" class="btn_close" ><i class="fa fa-close"></i></button>
 		<h2 style="float:center;">메뉴 등록</h2>
-		
+
 		<div class="radio">
 			<label><input type="radio" id="course" name="Code" value="course" onchange="radiochk()">만찬</label>
 			<label><input type="radio" id="set" name="Code" value="set" onchange="radiochk()" >정찬<br></label>
@@ -63,7 +63,7 @@ margin-top:10px;vertical-align:top;}
 		<br><br><br>
 		<input type="hidden" name="CodeName" id="CodeName"  class="input" value="" required>
 		<br>
-		
+
 		<select id="MenuCodeSelect" name="MenuCodeSelect" onchange="selectfunction()" required>
 						<option value="" selected>코스선택</option>
 						<c:forEach items="${list}" var="menu">
@@ -74,37 +74,41 @@ margin-top:10px;vertical-align:top;}
 		<input type="hidden" id="MenuCode" name="MenuCode" value="" readonly="readonly">
 		<input type="text" name="MenuCodeName" id="MenuCodeName" readonly="readonly">
 		<br>
-		
+
 		<input type="hidden" name="MenuDetailCode" id="MenuDetailCode" class="input" value="" required>
 
-		
+
 		<label for="MenuDetailCodeName" id="label"><b>메뉴명</b></label>
-		<input type="text" name="MenuDetailCodeName" id="MenuDetailCodeName" class="input" required>
+		<input type="text" name="MenuDetailCodeName" id="MenuDetailCodeName" class="input"
+		value='<c:out value="${menu.menuDetailCodeName}"/>' required>
 		<br>
-		
+
 		<label for="MenuPrice" id="label"><b>가격</b></label>
-		<input type="text" name="MenuPrice" id="MenuPrice" class="input" required>
+		<input type="text" name="MenuPrice" id="MenuPrice" class="input" 
+		value='<c:out value="${menu.menuPrice}"/>' required>
 		<br>
-		
+
 		<label for="MenuIngredients" id="label"><b>재료</b></label>
-		<input type="text" name="MenuIngredients" id="MenuIngredients" class="input" required>
+		<input type="text" name="MenuIngredients" id="MenuIngredients" class="input" 
+		value='<c:out value="${menu.menuIngredients}"/>' required>
 		<br>
 		<label for="MenuContent" id="label"><b>상세 내용</b></label>
-		<textarea id="MenuContent" name="MenuContent" cols="20" rows="20"></textarea>
+		<textarea id="MenuContent" name="MenuContent" cols="20" rows="20">
+		<c:out value="${menu.menuContent}"/></textarea>
 		<br>
-	
-		<label for="MenuAllergy" id="label"><b>알러지 정보</b></label>
-		<textarea id="MenuAllergy" name="MenuAllergy" cols="15" rows="20"></textarea>
-		<br>
-	
-		<!-- <label for="MenuImg" id="labelImg"><i class='fas fa-plus'></i></label> -->
 
-		<input type="file" id="MenuImg" name="MenuImg" multiple/>
+		<label for="MenuAllergy" id="label"><b>알러지 정보</b></label>
+		<textarea id="MenuAllergy" name="MenuAllergy" cols="15" rows="20">
+		<c:out value="${menu.menuAllergy}"/></textarea>
+		<br>
+
+		<label for="MenuImg" id="labelImg"><i class='fas fa-plus'></i></label>
+		<input type="file" id="MenuImg" name="MenuImg"/>
 		<!-- <button type="button" class="btn_img" onclick="imgupload()"><i class="fas fa-plus"></i></button> -->
 		<br>
-		
+
 		<button type="button" class="btn_next" onclick="AddBtn()">등록</button>
-		
+
 		</div>
 		</div>
 	</div>
@@ -208,4 +212,4 @@ $(document).ready(function() {
 	
 </script>
 </body>
-</html> 
+</html>  

@@ -46,7 +46,7 @@
 
 <section>
 <div class="wrap">
-   <button type="button" id="button" class="btn01">소개</button>
+   <button type="button" id="button" class="btn01" onclick="introducebtn()">소개</button>
    <button type="button" id="button"  class="btn02" onclick="menubtn()">메뉴</button>
    <div class="modal fade" id="Popup" role="dialog" tabindex="-1">
    
@@ -59,6 +59,14 @@
 <footer><%@ include file="footer.jsp" %></footer>
 </body>
 <script>
+function introducebtn() {
+	  var url = "http://localhost:8031/project/manager/Introduce/IntroduceList";
+	    
+	    // 팝업 호출
+	    $("#Popup").load(url, function() { 
+	   });
+}
+
 function menubtn() {
 	  var url = "http://localhost:8031/project/manager/menu/menuList";
 	    

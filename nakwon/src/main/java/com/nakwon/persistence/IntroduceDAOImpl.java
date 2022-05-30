@@ -14,8 +14,8 @@ public class IntroduceDAOImpl implements IntroduceDAO{
 	private static final String namespace = "com.nakwon.mapper.IntroduceMapper";
 
 	@Override
-	public void insert(IntroduceVO vo) throws Exception {
-		sqlSession.insert(namespace+".insert",vo);
+	public void introduceinsert(IntroduceVO vo) throws Exception {
+		sqlSession.insert(namespace+".introduceinsert",vo);
 	}
 	
 	@Override

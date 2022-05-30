@@ -19,10 +19,9 @@ public class IntroduceDAOTest {
 	@Test
 	public void testInsertIntroduce() throws Exception {
 		IntroduceVO vo = new IntroduceVO();
-		vo.setIntroCode(01);
 		vo.setIntroTitle("낙원 소개");
 		vo.setIntroContent("낙원은 아무런 걱정이나 부족함이 없이 살 수 있는 즐거운 곳입니다.");
 		/*vo.setIntroImg();	*/	
-		dao.insert(vo);
+		dao.introduceinsert(vo);
 	}
 }

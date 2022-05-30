@@ -7,9 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!--  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" 
-    crossorigin="anonymous"></script> -->
-     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <title>Document</title>
 </head>
 <style>
@@ -24,7 +22,7 @@ left: 43%;
 margin: -250px 0 0 -250px;
 background-color: #fff;
 z-index: 2;
-overflow:auto;/*스크롷ㄹ*/
+overflow:auto;
     }
 .backon{
     content: "";
@@ -34,7 +32,6 @@ overflow:auto;/*스크롷ㄹ*/
     position: fixed;
     top: 0;
     left: 0;
-    /* z-index: 1; */
 }
 .close{
   position:absolute;
@@ -70,33 +67,29 @@ padding:20px;
 <!-- <div class="openPopup">클릭하면 팝업이 나와요</div>    -->
 <div id="popup01">
 
-
-
     <div class="close">close</div>
     <div>
 
-    <h2 align="center">메뉴 목록</h2>
+    <h2 align="center">소개 목록</h2>
 
     <div align="right">
     <div class="modal fade" id="sampleModalPopup" role="dialog" tabindex="-1"></div>
-</div>
+	</div>
 
 
     <table id="listTbl">
 	<thead>
 	<tr>
-	<th>만찬/정판</th>
-	<th>메뉴명</th>
-	<th>내용</th>
+	<th>코드</th>
+	<th>제목</th>
+	<th>세부 내용</th>
 	</tr>
 	</thead>
 	 <c:forEach items="${list}" var="list">
             <tr>
-            	<td align="center">
-            	<a href='project/manager/menu/viewMenu?MenuDetailCode=<c:out value="${list.menuDetailCode }"/>'>
-            	<c:out value="${list.codeName}"/></a></td>
-            	<td align="center"><c:out value="${list.menuDetailCodeName}"/></td>
-                <td align="center"><c:out value="${list.menuContent}"/></td>
+            	<td align="center"><c:out value="${list.introCode}"/></td>
+                <td align="center"><c:out value="${list.introTitle}"/></td>
+                <td align="center"><c:out value="${list.introContent}"/></td>
             </tr>
 </c:forEach> 
 </table>
@@ -121,19 +114,12 @@ padding:20px;
       	    $(".backon").hide();
         }
       });
-     var url = "http://localhost:8031/project/manager/menu/menuAdd";
+     var url = "http://localhost:8031/project/manager/Introduce/IntroduceAdd";
 	    
 	    // 팝업 호출
 	    $("#sampleModalPopup").load(url, function() { 
 	   });
     
   });
-  
-  /*  function viewMenu() {
-  var url="http://localhost:8031/project/manager/menu/viewMenu";
-// 팝업 호출
-    $("#sampleModalPopup").load(url, function() { 
-   });
-} */
 </script>
 </html>

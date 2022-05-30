@@ -1,7 +1,7 @@
 package com.nakwon.service;
 
 import java.util.List;
-
+import com.nakwon.domain.Criteria;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.nakwon.domain.ReservationVO;
@@ -21,5 +21,14 @@ public class ReservationHoldServiceImpl implements ReservationHoldService {
 	public List<ReservationVO> rsrvHoldListAll() throws Exception {
 		return dao.rsrvHoldListAll();
 	}
+	
+	@Override
+	public int listCountCriteria(Criteria cri) throws Exception {
+		return dao.listCountPaging(cri);
+	}
 
+	@Override
+	public List<ReservationVO> listCriteria(Criteria cri)throws Exception {
+		return dao.listCriteria(cri);
+	}
 }

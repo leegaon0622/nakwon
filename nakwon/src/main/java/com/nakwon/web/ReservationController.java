@@ -4,10 +4,14 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.nakwon.domain.Criteria;
 import com.nakwon.domain.MenuVO;
+import com.nakwon.domain.PageMaker;
+import com.nakwon.domain.ReservationVO;
 import com.nakwon.service.ReservationHoldService;
 
 @Controller
@@ -16,19 +20,22 @@ public class ReservationController {
 	@Inject
 	private ReservationHoldService reservationholdservice;
 
-	//¿¹¾à µî·Ï GET
-	/*
-	 * @RequestMapping(value="/menuAdd", method=RequestMethod.GET) public void
-	 * menuAddGET(MenuVO vo, Model model) throws Exception{
-	 * System.out.println("MenuVO GET Called"); model.addAttribute("list",
-	 * reservationholdservice.menuListAll()); }
-	 * 
-	 * //¿¹¾à µî·Ï POST
-	 * 
-	 * @RequestMapping(value="/menuAdd", method=RequestMethod.POST) public void
-	 * menuAddPOST(MenuVO vo, Model model) throws Exception {
-	 * System.out.println("MenuVO POST Called"); reservationholdservice.insert(vo);
-	 * }
-	 */
+	@RequestMapping(value="/reservationList", method=RequestMethod.GET)
+	public void menuList(@ModelAttribute("cri") Criteria cri, ReservationVO vo, Model model) throws Exception{
+		 System.out.println(cri.toString());
 
+		 model.addAttribute("list", reservationholdservice.listCriteria(cri));
+		 PageMaker pageMaker = new PageMaker();
+		 pageMaker.setCri(cri);
+		 pageMaker.setTotalCount(reservationholdservice.listCountCriteria(cri));
+		 model.addAttribute("pageMaker", pageMaker);
+		 //model.addAttribute("list", reservationholdservice.rsrvHoldListAll());		
+	}
+
+	@RequestMapping(value="/reservationList", method=RequestMethod.POST)
+	public void menuListPOST(ReservationVO vo, Model model) throws Exception{
+		reservationholdservice.insertReservationHold(vo);
+		model.addAttribute("list", reservationholdservice.rsrvHoldListAll());
+
+	}
 }

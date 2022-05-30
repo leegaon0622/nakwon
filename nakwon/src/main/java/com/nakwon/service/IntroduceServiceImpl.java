@@ -13,8 +13,8 @@ public class IntroduceServiceImpl implements IntroduceService{
 	IntroduceDAO dao;
 	
 	@Override
-	public void insert(IntroduceVO vo) throws Exception{
-		dao.insert(vo);
+	public void introduceinsert(IntroduceVO vo) throws Exception{
+		dao.introduceinsert(vo);
 	}
 	
 	@Override

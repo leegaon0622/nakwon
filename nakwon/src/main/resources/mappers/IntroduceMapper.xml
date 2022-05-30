@@ -5,9 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.nakwon.mapper.IntroduceMapper">
 	<!-- 소개 등록 -->
-	<insert id="insert">
-		insert into Introduce (IntroCode, IntroTitle, IntroContent, IntroImg)
-		values (#{IntroCode}, #{IntroTitle}, #{IntroContent}, #{IntroImg})
+	<insert id="introduceinsert">
+		insert into Introduce (IntroTitle, IntroContent, IntroImg)
+		values (#{IntroTitle}, #{IntroContent}, #{IntroImg})
 	</insert>
 	
 	<select id="introduceListAll" resultType="com.nakwon.domain.IntroduceVO">
