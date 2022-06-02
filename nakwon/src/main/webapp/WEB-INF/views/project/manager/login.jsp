@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>낙원 관리자</title>
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
 
 <style>
@@ -118,6 +118,7 @@
     opacity: .85;
 }
 </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <script type="text/javascript">	
 	function loginCheck2() {
@@ -148,7 +149,7 @@
 
 	<c:if test = "${result==0 }">
 		<script type="text/javascript">
-		 alert("아이디 또는 비밀번호를 잘못 입력하셨습니다.");
+		swal("로그인에 실패하였습니다.", "아이디 또는 비밀번호를 잘못 입력하셨습니다.", "error");
 		</script>
 		</c:if>
 	</div>

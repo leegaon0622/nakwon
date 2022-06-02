@@ -57,7 +57,7 @@ margin-top:10px;vertical-align:top;}
 		
 		<label for="IntroContent" id="label"><b>상세 내용</b></label>
 		<textarea id="IntroContent" name="IntroContent" cols="20" rows="20"></textarea>
-		<br>		
+		<br><br><br>		
 	
 		<input type="file" id="IntroImg" name="IntroImg" multiple/>
 		<!-- <button type="button" class="btn_img" onclick="imgupload()"><i class="fas fa-plus"></i></button> -->
@@ -75,12 +75,6 @@ margin-top:10px;vertical-align:top;}
 $(document).ready(function() {
 	$("#open").click(function() {
 		$("#add_introduce").show();
-	});
-	$("#modify").click(function() {
-		$("#modify_introduce").show();
-	});
-	$("#delete").click(function() {
-		$("#delete_introduce").show();
 	});
 });
 

@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{RsrvCode}, #{Phone}, #{Name}, #{Email}, #{RsrvDate}, #{Pnum}, #{Message}, #{Code}, #{MenuCode})
 	</insert>
 	
-	<select id="rsrvHoldListAll" resultType="com.nakwon.domain.ReservationVO">
+	<select id="rsrvHoldListAll" resultType="com.nakwon.domain.ReservationHoldVO">
 	<![CDATA[
 	select *
 	from ReservationHold
@@ -25,12 +25,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>
 
-	<select id="listCriteria" resultType="com.nakwon.domain.ReservationVO">
+	<select id="listCriteria" resultType="com.nakwon.domain.ReservationHoldVO">
 	<![CDATA[ 
 	select * 
 	from ReservationHold
 	order by RsrvCode limit #{pageStart}, #{perPageNum} 
 	]]>
+	</select>
+	
+	<select id="userReservationCheck" parameterType="Map" resultType="com.nakwon.domain.ReservationHoldVO">
+		select * 
+		from ReservationHold 
+		where RsrvCode=#{RsrvCode} and Name=#{Name} and Phone=#{Phone}
 	</select>
 	
 </mapper>

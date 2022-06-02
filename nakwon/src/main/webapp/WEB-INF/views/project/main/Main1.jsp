@@ -36,9 +36,9 @@
 	/*배너*/
 	* {margin:0;padding:0;}
 	.section input[id*="slide"] {display:none;}
-	.section .slidewrap {max-width:1000px; position:relative; margin-top: 50px; margin-left: 800px;}
+	.section .slidewrap {max-width:1000px; position:relative; margin-top: 50px; margin-left: 800px; overflow:hidden;}
 	.section .slidelist {white-space:nowrap;font-size:0;overflow:hidden;position:relative;}
-	.section .slidelist > li {display:inline-block;vertical-align:middle;width:100%;transition:all .5s;}
+	.section .slidelist > li {display:inline-block;vertical-align:middle;width:1000px;transition:all .5s;}
 	.section .slidelist > li > a {display:block;position:relative;}
 	.section .slidelist > li > a img {width:100%;}
 	.section .slidelist label {position:absolute;z-index:10;top:50%;transform:translateY(-50%);padding:50px;cursor:pointer;}
@@ -66,9 +66,9 @@
 	.section input[id="slide03"]:checked ~ .slidewrap .slide-pagelist > li:nth-child(3) > label {background:#999;}
 </style>
 
-<!-- 
-<script type="text/javascript" src="resources/js/jquery-3.6.0.min.js">
-	/*$(document).ready(function() {
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script>
+   $(document).ready(function() {
 		//사용할 배너
 		var $banner = $(".banner").find(".ul");
 
@@ -96,7 +96,7 @@
 			});
 		}
 	});	
-</script>-->
+</script>
 </head>
 
 <body> 

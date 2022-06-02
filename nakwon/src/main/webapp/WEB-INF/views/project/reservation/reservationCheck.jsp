@@ -1,10 +1,20 @@
-<%@ page session="false" contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>낙원</title>
 <style>
+@font-face {
+    font-family: 'JSArirangHON-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSArirangHON-RegularA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 #reservationCheck-allwrap{
 	max-width: 1000px;
 	margin: 0 auto;
@@ -72,7 +82,11 @@
 	height: 60px;
 	margin: 30px 0 30px 0;
 }
+.swal-title, .swal-text{
+	font-family: 'JSArirangHON-Regular';
+}
 </style>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <%@ include file="../main/top.jsp" %>
@@ -105,6 +119,12 @@
 	</form>
 	</div>
 </div>
+
+<c:if test = "${result == 0}">
+	<script type="text/javascript">
+		 swal("예약 조회에 실패하였습니다.", "목록에 없는 예약입니다. 다시 시도해주세요.", "error");
+	</script>
+</c:if>
 
 <%@ include file="../main/footer.jsp" %>
 </body>

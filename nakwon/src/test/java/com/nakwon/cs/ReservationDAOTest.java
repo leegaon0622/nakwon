@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import com.nakwon.domain.ReservationVO;
+import com.nakwon.domain.ReservationHoldVO;
 import com.nakwon.persistence.ReservationHoldDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,7 +19,7 @@ public class ReservationDAOTest {
 	
 	@Test
 	public void insertReservation() throws Exception {
-		ReservationVO vo = new ReservationVO();
+		ReservationHoldVO vo = new ReservationHoldVO();
 		vo.setPhone("01012345678");
 		vo.setName("Á¤½Â°æ");
 		vo.setEmail("skyeong1003@naver.com");

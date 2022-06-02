@@ -321,10 +321,9 @@ document.getElementById("reservationform").onsubmit=function(){
 	result = "";
 	num = 6;
 	charListLen = charList.length;
-	for(i=0; i<num; i++){
+	for(i=0; i<num; i++){ //난수 생성 for문
 		result += charList.charAt(Math.floor(Math.random() * charListLen));
 	}
-	//생성한 난수가 db에 이미 존재하는지 확인
 	
 	$("input[name=rsrvCode]").attr("value", result); //name이 rsrvCode인 input에 result을 value로 지정
 	

@@ -4,6 +4,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 import com.nakwon.service.IntroduceService;
 import com.nakwon.domain.IntroduceVO;
@@ -53,4 +55,11 @@ public class IntroduceController {
 				model.addAttribute("list", introduceservice.introduceListAll());
 				return "home";
 			}
+			
+		@RequestMapping(value="/remove", method=RequestMethod.POST)
+		public String remove(@RequestParam("introCode") int introCode, RedirectAttributes rttr) throws Exception{
+			introduceservice.remove(introCode);
+			return "redirect:/manager/Introduce/IntroduceList";
+			}
+			
 	} 

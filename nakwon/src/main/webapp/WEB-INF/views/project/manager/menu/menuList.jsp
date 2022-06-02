@@ -128,12 +128,5 @@ padding:20px;
 	   });
     
   });
-  
-  /*  function viewMenu() {
-  var url="http://localhost:8031/project/manager/menu/viewMenu";
-// 팝업 호출
-    $("#sampleModalPopup").load(url, function() { 
-   });
-} */
 </script>
 </html>

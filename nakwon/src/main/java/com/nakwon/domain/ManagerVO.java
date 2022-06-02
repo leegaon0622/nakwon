@@ -16,7 +16,7 @@ public class ManagerVO {
 	public void setUserpw(String userpw) {
 		this.userpw = userpw;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "ManagerVO [userid=" + userid + ", userpw=" + userpw + "]";

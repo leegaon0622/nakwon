@@ -10,10 +10,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{IntroTitle}, #{IntroContent}, #{IntroImg})
 	</insert>
 	
+	<!-- 소개 삭제 -->
+	<delete id="delete">
+ 	delete from Introduce where introCode = #{introCode}
+ 	</delete>
+ 
+	<!-- 소개 목록 -->
 	<select id="introduceListAll" resultType="com.nakwon.domain.IntroduceVO">
 	<![CDATA[
 	select *
 	from Introduce
 	]]>
 	</select>	
+	
+	<!-- <select id="listCriteria" resultType="com.nakwon.domain.IntroduceVO">
+	 <![CDATA[
+	 select *
+	 from Introduce
+	 where introCode > 0 order by introCode desc, regdate desc
+	 limit #{pageStart}, #{perPageNum}
+	 ]]>  
+ 	</select>
+ 
+    <select id="countPaging" resultType="int">
+	 <![CDATA[
+	 select 
+	   count(introCode) 
+	 from Introduce
+	 where introCode > 0
+	 ]]>  
+    </select>-->
+ 
 </mapper>

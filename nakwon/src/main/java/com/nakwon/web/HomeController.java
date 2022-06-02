@@ -4,7 +4,9 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +26,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.nakwon.domain.IntroduceVO;
 import com.nakwon.domain.ManagerVO;
 import com.nakwon.domain.MenuVO;
-import com.nakwon.domain.ReservationVO;
+import com.nakwon.domain.ReservationConfirmVO;
+import com.nakwon.domain.ReservationHoldVO;
 import com.nakwon.service.IntroduceService;
 import com.nakwon.service.ManagerService;
 import com.nakwon.service.MenuService;
+import com.nakwon.service.ReservationConfirmService;
 import com.nakwon.service.ReservationHoldService;
 
 /**
@@ -49,6 +53,9 @@ public class HomeController {
 
 	@Inject
 	private ReservationHoldService reservationholdservice;
+	
+	@Inject
+	private ReservationConfirmService reservationconrifmservice;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -175,6 +182,83 @@ public class HomeController {
 		return "project/reservation/reservationCheck";
 	}
 
+	// 사용자 예약 조회 
+		@RequestMapping(value = "/reservationCheck", method = RequestMethod.POST)
+		public String ReservationCheckPOST(HttpServletRequest request, RedirectAttributes rttr, Model model) {
+			Map<String,String> ConfirmCheck = new HashMap<String, String>(); //예약 확정 테이블로 보낼 map
+			ConfirmCheck.put("RsrvCode", request.getParameter("rsrvCode")); 
+			ConfirmCheck.put("Name", request.getParameter("Name")); 
+			ConfirmCheck.put("Phone", request.getParameter("Phone"));
+
+			Map<String,String> Check = new HashMap<String, String>(); //예약 보류 테이블로 보낼 map
+			Check.put("RsrvCode", request.getParameter("rsrvCode")); 
+			Check.put("Name", request.getParameter("Name")); 
+			Check.put("Phone", request.getParameter("Phone"));
+
+			int result;
+			try {
+				//예약 조회 실행(확정 테이블)
+				ReservationConfirmVO confirmvo = reservationconrifmservice.userReservationCheck(ConfirmCheck);
+				if (confirmvo == null) { //확정테이블에 정보가 없는 경우
+					//예약 조회 실행(보류 테이블)
+					ReservationHoldVO holdvo = reservationholdservice.userReservationCheck(Check);
+					if (holdvo == null) { //보류테이블에 정보가 없는 경우
+						result = 0; //조회 실패
+						rttr.addFlashAttribute("result", result);
+						return "redirect:/reservationCheck";
+					}
+					else { //정보가 있으면 보류 테이블의 정보를 리다이렉트로 보냄.
+						result = 1; //조회 성공(보류 테이블)
+						rttr.addAttribute("Name", holdvo.getName()); 
+						rttr.addAttribute("RsrvCode", holdvo.getRsrvCode());
+						rttr.addAttribute("Pnum", holdvo.getPnum());
+						rttr.addAttribute("RsrvDate", holdvo.getRsrvDate()); 
+						rttr.addAttribute("Message", holdvo.getMessage());
+						rttr.addAttribute("Code", holdvo.getCode()); //정찬/만찬
+						rttr.addAttribute("MenuCode", holdvo.getMenuCode()); //메뉴
+						rttr.addAttribute("result", result); //조회 결과
+					}
+				}
+				else { //정보가 있으면 확정 테이블의 정보를 리다이렉트로 보냄.
+					result = 2; //조회 성공(확정 테이블)
+					rttr.addAttribute("Name", confirmvo.getName()); 
+					rttr.addAttribute("RsrvCode", confirmvo.getRsrvCode());
+					rttr.addAttribute("Pnum", confirmvo.getPnum());
+					rttr.addAttribute("RsrvDate", confirmvo.getRsrvDate()); 
+					rttr.addAttribute("Message", confirmvo.getMessage());
+					rttr.addAttribute("Code", confirmvo.getCode()); //정찬/만찬
+					rttr.addAttribute("MenuCode", confirmvo.getMenuCode()); //메뉴
+					rttr.addAttribute("result", result); //조회 결과
+				}
+			} catch(Exception e) {
+				e.printStackTrace(); //에러일 경우 에러 코드 전송 400 
+				System.out.println("error"); 
+			}
+			return "redirect:/userReservationCheck"; //예약자 조회 페이지로 이동
+		}
+
+		// 사용자 예약 조회 성공 페이지 mapping
+		@RequestMapping(value = "/userReservationCheck", method = RequestMethod.GET)
+		public String userReservationCheck(@RequestParam("Name") String Name, 
+					@RequestParam("Pnum") int Pnum, @RequestParam("Code") String Code, @RequestParam("RsrvDate") Timestamp RsrvDate,
+					@RequestParam("MenuCode") String MenuCode, @RequestParam("Message") String Message,
+					@RequestParam("RsrvCode") String RsrvCode, @RequestParam("result") int result, Locale locale, Model model) { 
+			try {
+				model.addAttribute("Name", Name);
+				model.addAttribute("RsrvDate", RsrvDate);
+				model.addAttribute("Pnum", Pnum);
+				model.addAttribute("Code", Code);
+				model.addAttribute("MenuCode", MenuCode);
+				model.addAttribute("Message", Message);
+				model.addAttribute("RsrvCode", RsrvCode);
+				model.addAttribute("result", result);
+			}catch(Exception e) {
+				e.printStackTrace(); //에러일 경우 에러 코드 전송 400 
+				System.out.println("error");
+			}
+			return "project/reservation/userReservationCheck";
+		}
+		
 	// 예약 페이지 mapping
 	@RequestMapping(value = "/reservation", method = RequestMethod.GET)
 	public String reservation(Model model) throws Exception {
@@ -205,7 +289,7 @@ public class HomeController {
 	// 예약 등록
 	@RequestMapping(value = "/reservation", method = RequestMethod.POST)
 	public String reservationAddPOST(Model model, HttpServletRequest request, RedirectAttributes redirectAttributes) throws Exception {
-		ReservationVO rsrv = new ReservationVO();
+		ReservationHoldVO rsrv = new ReservationHoldVO();
 		//try {
 			rsrv.setRsrvCode(request.getParameter("rsrvCode"));
 			rsrv.setName(request.getParameter("name"));
@@ -252,12 +336,6 @@ public class HomeController {
 		return "redirect:/reservationSuccess"; // 성공 시 예약 성공 페이지로 이동
 	}
 
-	// 메인1 페이지 mapping
-	@RequestMapping(value = "/Main1", method = RequestMethod.GET)
-	public String Main1() {
-		return "project/main/Main1";
-	}
-
 	// 예약 등록 성공 페이지 mapping
 	@RequestMapping(value = "/reservationSuccess", method = RequestMethod.GET)
 	public String reservationSuccess(@RequestParam("Name") String Name, @RequestParam("RsrvDate") String RsrvDate,
@@ -278,6 +356,12 @@ public class HomeController {
 		return "project/reservation/reservationSuccess";
 	}
 
+	// 메인1 페이지 mapping
+		@RequestMapping(value = "/Main1", method = RequestMethod.GET)
+		public String Main1() {
+			return "project/main/Main1";
+		}
+		
 	// 예약 등록 실패 페이지 mapping
 	@RequestMapping(value = "/reservationFail", method = RequestMethod.GET)
 	public String reservationFail(Model model) throws Exception {
