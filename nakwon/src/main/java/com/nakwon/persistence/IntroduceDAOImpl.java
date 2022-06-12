@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.nakwon.domain.Criteria;
+import com.nakwon.domain.CriteriaIntro;
 import com.nakwon.domain.IntroduceVO;
 
 @Repository
@@ -29,13 +29,13 @@ public class IntroduceDAOImpl implements IntroduceDAO{
 		return sqlSession.selectList(namespace+".introduceListAll");
 	}	
 	  
-   /* @Override
-	public List<IntroduceVO> listCriteria(Criteria cri) throws Exception {
-	    return sqlSession.selectList(namespace + ".Criteria", cri);
+    @Override
+	public List<IntroduceVO> listCriteria(CriteriaIntro criIntro) throws Exception {
+	    return sqlSession.selectList(namespace + ".CriteriaIntro", criIntro);
 	}
 	  
 	@Override
-	public int countPaging(Criteria cri) throws Exception {
-	  return sqlSession.selectOne(namespace + ".countPaging", cri);
-	}*/
+	public int listcountPaging(CriteriaIntro criIntro) throws Exception {
+	  return sqlSession.selectOne(namespace + ".listcountPaging", criIntro);
+	}
 } 

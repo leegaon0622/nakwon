@@ -23,22 +23,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>	
 	
-	<!-- <select id="listCriteria" resultType="com.nakwon.domain.IntroduceVO">
+	<!-- 소개 페이징 -->
+	<select id="listCriteria" resultType="com.nakwon.domain.IntroduceVO">
 	 <![CDATA[
 	 select *
 	 from Introduce
-	 where introCode > 0 order by introCode desc, regdate desc
+	 order by introCode desc
 	 limit #{pageStart}, #{perPageNum}
 	 ]]>  
  	</select>
  
-    <select id="countPaging" resultType="int">
+    <select id="listcountPaging" resultType="int">
 	 <![CDATA[
 	 select 
 	   count(introCode) 
 	 from Introduce
-	 where introCode > 0
 	 ]]>  
-    </select>-->
+    </select>
  
 </mapper>

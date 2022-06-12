@@ -149,7 +149,12 @@
 
 	<c:if test = "${result==0 }">
 		<script type="text/javascript">
-		swal("로그인에 실패하였습니다.", "아이디 또는 비밀번호를 잘못 입력하셨습니다.", "error");
+		swal({
+			title: "로그인에 실패하였습니다.",
+			text: "아이디 또는 비밀번호를 잘못 입력하셨습니다.",
+			icon: "error",
+			closeOnClickOutside: false
+		});
 		</script>
 		</c:if>
 	</div>

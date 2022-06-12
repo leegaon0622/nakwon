@@ -82,13 +82,12 @@
 	height: 60px;
 	margin: 30px 0 30px 0;
 }
-.swal-title, .swal-text{
-	font-family: 'JSArirangHON-Regular';
-}
+.swal-title, .swal-text {font-family: 'JSArirangHON-Regular';}
 </style>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+<!-- 예약 조회 페이지 -->
 <%@ include file="../main/top.jsp" %>
 
 <div id="reservationCheck-allwrap">
@@ -122,7 +121,12 @@
 
 <c:if test = "${result == 0}">
 	<script type="text/javascript">
-		 swal("예약 조회에 실패하였습니다.", "목록에 없는 예약입니다. 다시 시도해주세요.", "error");
+	swal({
+		title: "예약 조회에 실패하였습니다.",
+		text: "목록에 없는 예약입니다. 다시 시도해주세요.",
+		icon: "error",
+		closeOnClickOutside: false
+	});
 	</script>
 </c:if>
 

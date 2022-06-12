@@ -5,7 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
-import com.nakwon.domain.Criteria;
+import com.nakwon.domain.CriteriaIntro;
 import com.nakwon.domain.IntroduceVO;
 import com.nakwon.persistence.IntroduceDAO;
 
@@ -29,13 +29,13 @@ public class IntroduceServiceImpl implements IntroduceService{
 		return dao.introduceListAll();
 	}
 	
-	/*	@Override
-	public List<IntroduceVO> listCriteria(Criteria cri) throws Exception {
-	    return dao.listCriteria(cri);
+	@Override
+	public List<IntroduceVO> listCriteria(CriteriaIntro criIntro) throws Exception {
+	    return dao.listCriteria(criIntro);
 	}
 	  
 	@Override
-	public int listCountCriteria(Criteria cri) throws Exception {
-	    return dao.countPaging(cri);
-    }    */
+	public int listCountCriteria(CriteriaIntro criIntro) throws Exception {
+	    return dao.listcountPaging(criIntro);
+    } 
 }

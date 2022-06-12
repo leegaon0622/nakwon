@@ -28,7 +28,7 @@ border: none;border-radius: 30px;cursor: pointer;transition: .3s linear;float:ri
 border-radius:10px;cursor: pointer;transition: .3s linear;float:right;background-color:lightgray;
 font-family: 'Yeon Sung', cursive; font-color: #0D47A1;} 
 .radio {float:left;text-align:center;padding:0 20px;font-weight:bold;}
-.input {width: 70%;height: 30px; border: none;background-color: #ededed;border-radius: 4px;color: #333;padding:10px;margin-top:10px;}
+.form-control {width: 70%;height: 30px; border: none;background-color: #ededed;border-radius: 4px;color: #333;padding:10px;margin-top:10px;}
 textarea { width: 70%;height: 20px;border: none;background-color: #ededed;border-radius: 4px;color: #333;padding:100px;
 margin-top:10px;vertical-align:top;}
 #label { text-align:center; width:100px; height:20px;margin-top: 20px;  float:left;} 
@@ -40,34 +40,35 @@ margin-top:10px;vertical-align:top;}
 <% request.setCharacterEncoding("UTF-8"); %>
 <form class="introduceAdd" name="introduceAddform" method="post" accept-charset="utf-8" action="introducecheck.do">
 	<div class="wrap">
-		<button type="button" id="open" class="btn_add">소개 등록</button>
+		<button type="button" id="open" class="btn btn-warning">소개 수정</button>
+		<button type="button" id="open" class="btn btn-danger">소개 삭제</button>
+		<button type="button" id="open" class="btn btn-primary">돌아가기</button>
 		<div id="add_introduce" class="introduce" style="display:none;">
 	
 		<div class="inner">
 		
 		<button type="button" class="btn_close"><i class="fa fa-close"></i></button>
-		<h2 style="float:center;">소개 등록</h2>
+		<h2 style="float:center;">소개</h2>
 
 		<br>			
 		<label for="IntroTitle" id="label"><b>제목</b></label>
-		<input type="text" name="IntroTitle" id="IntroTitle"  class="input" required>
+		<input type="text" name="IntroTitle" id="IntroTitle" 
+		 class="form-control" value="${IntroduceVO.IntroTitle}" readonly="readonly">
 		<br>
 		
 		<label for="IntroContent" id="label"><b>상세 내용</b></label>
-		<textarea id="IntroContent" name="IntroContent" cols="20" rows="20"></textarea>
+		<textarea id="IntroContent" name="IntroContent" form-control
+		cols="20" rows="20" readonly="readonly" value="${IntroduceVO.IntroContent}" ></textarea>
 		<br><br><br>		
 	
 		<input type="file" id="IntroImg" name="IntroImg" multiple/>
 		<!-- <button type="button" class="btn_img" onclick="imgupload()"><i class="fas fa-plus"></i></button> -->
 		<br>
 		
-		<button type="button" class="btn_next" onclick="AddBtn()">등록</button>
-		
 		</div>
 		</div>
 	</div>
 </form>
-
 
 <script type="text/javascript">	
 $(document).ready(function() {
@@ -93,20 +94,27 @@ $(document).ready(function() {
 	  });
 	}
 	
-	function AddBtn() {
-				
-		if(document.introduceAddform.IntroTitle.value=="" && document.introduceAddform.IntroContent.value=="") {
-			alert("제목 또는 상세 내용을 입력해주세요.");
-			document.introduceAddform.IntroTitle.focus();
-			document.introduceAddform.IntroContent.focus();
-			return;
-		}		
-			
-		alert("등록 성공");
-		history.back();
-		document.introduceAddform.submit();
-	}
-	
+	$(document).ready(function(){		
+		var formObj = $("form[role='form']");
+		
+		console.log(formObj);
+		
+		$(".btn-warning").on("click", function(){
+			formObj.attr("action", "/project/manager/Introduce/IntroduceModify");
+			formObj.attr("method", "get");		
+			formObj.submit();
+		});
+		
+		$(".btn-danger").on("click", function(){
+			formObj.attr("action", "/project/manager/Introduce/IntroduceRemove");
+			formObj.submit();
+		});
+		
+		$(".btn-primary").on("click", function(){
+			self.location = "/project/manager/Introduce/IntroduceList";
+		});		
+	});	
 </script>
 </body>
 </html> 
+

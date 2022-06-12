@@ -42,4 +42,13 @@ public class ReservationHoldDAOImpl implements ReservationHoldDAO{
 		public ReservationHoldVO userReservationCheck(Map<String,String> Check) throws Exception {
 			return sqlSession.selectOne(namespace+".userReservationCheck", Check);
 		}
+		
+		public void deleteReservationHold(Map<String,String> DeleteInfo)throws Exception {
+			sqlSession.delete(namespace+".deleteReservationHold", DeleteInfo);
+		}
+		
+		@Override
+		public void modifyReservationHold(ReservationHoldVO vo) throws Exception { //예약 수정
+			sqlSession.update(namespace + ".modifyReservationHold", vo);
+		}
 }

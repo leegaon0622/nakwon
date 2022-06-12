@@ -60,7 +60,7 @@
    <div class="modal fade" id="PopupRsrv" role="dialog" tabindex="">
    </div>
 </div>
-<br><br>
+<br><br><br>
 </section>
 <footer><%@ include file="footer.jsp" %></footer>
 </body>

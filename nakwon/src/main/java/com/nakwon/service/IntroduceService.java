@@ -2,7 +2,7 @@ package com.nakwon.service;
 
 import java.util.List;
 
-import com.nakwon.domain.Criteria;
+import com.nakwon.domain.CriteriaIntro;
 import com.nakwon.domain.IntroduceVO;
 
 public interface IntroduceService {
@@ -12,7 +12,7 @@ public interface IntroduceService {
 	  
 	public List<IntroduceVO> introduceListAll() throws Exception;
 	  
-	/*public List<IntroduceVO> listCriteria(Criteria criteria) throws Exception;
+	public List<IntroduceVO> listCriteria(CriteriaIntro criteriaIntro) throws Exception;
 	  
-	public int listCountCriteria(Criteria cri)throws Exception;*/
+	public int listCountCriteria(CriteriaIntro criIntro)throws Exception;
 }
