@@ -79,6 +79,7 @@
 </style>
 </head>
 <body>
+<!-- 예약 성공 페이지 - 예약 확인 창 -->
 <%@ include file="../main/top.jsp" %>
 
 <div id="rsrvInsertCheck-allwrap">

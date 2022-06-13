@@ -10,17 +10,17 @@
 
 <style>
 @font-face {
-    font-family: 'HSGyoulnoonkot';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/HSGyoulnoonkot.woff') format('woff');
+    font-family: 'Yeon Sung', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap') ;
     font-weight: normal;
     font-style: normal;
-}
+}	
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'HSGyoulnoonkot';
+    font-family: 'Yeon Sung', cursive;
 }
 
  body {

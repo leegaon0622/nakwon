@@ -77,7 +77,6 @@ li a {
 	line-height: 30px;
 }
 .paging-wrap { text-align: center; }
-
 </style>
 <body>
 <!-- <div class="openPopup">클릭하면 팝업이 나와요</div>    -->

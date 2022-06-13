@@ -19,4 +19,6 @@ public interface ReservationHoldDAO {
 	public void deleteReservationHold(Map<String,String> DeleteInfo) throws Exception;
 	
 	public void modifyReservationHold(ReservationHoldVO vo) throws Exception; //예약 수정
+
+	 public ReservationHoldVO reservationRead(String RsrvCode) throws Exception; //관리자 예약 조회
 }

@@ -48,4 +48,9 @@ public class ReservationHoldServiceImpl implements ReservationHoldService {
 	public void modifyReservationHold(ReservationHoldVO vo) throws Exception {
 		dao.modifyReservationHold(vo);
 	}
+	
+	@Override
+	  public ReservationHoldVO reservationRead(String RsrvCode) throws Exception {
+		 return dao.reservationRead(RsrvCode);
+	}
 }

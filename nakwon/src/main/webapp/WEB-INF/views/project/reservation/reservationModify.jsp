@@ -12,11 +12,18 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'JSArirangHON-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/JSArirangHON-RegularA1.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 .essential {color: red;}
 #reservationTable-allwrap{
 	padding-top: 60px;
 	padding-bottmon: 60px;
 	max-width: 1000px;
+	height: 700px;
 	margin: 0 auto;
 }
 .reservationTable {
@@ -30,16 +37,7 @@
 	padding-bottom: 20px;
 	border-bottom: 2px solid;
 }
-.reservationTableTextBig{
-	font-size: 20px;
-	font-weight: bold;
-	padding-top: 20px;
-}
 .reservationTableTextSmall {color: #4e4e4e;}
-ul {
-	list-style:none;
-	margin-bottom: 15px;
-}
 .reservationTitle{
 	font-size: 17px;
 	font-weight: bold;
@@ -51,7 +49,7 @@ ul {
 	width: 360px;
 	height: 80px;
 }
-.reservationBtn{
+.reservationModifyBtn{
 	font-size: 17px;
 	font-weight: bold;
 	font-family: 'HSGyoulnoonkot';
@@ -80,6 +78,7 @@ ul {
 #Pnum {width: 210px;} 
 #btn-wrap {text-align: center;}
 #courseselect, #menuselect {width: 180px;}
+.swal-title, .swal-text {font-family: 'JSArirangHON-Regular';}
 <!-- 달력의 주말 색상 다르게 변경(일: 빨강, 토: 파랑)-->
 .ui-datepicker-calendar > tbody td.ui-datepicker-week-end:first-child a { color: red; }
 .ui-datepicker-calendar > tbody td.ui-datepicker-week-end:last-child a { color: #0099ff; }
@@ -128,39 +127,20 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-<!-- 예약 페이지 -->
+<!-- 예약 수정 페이지 -->
 <%@ include file="../main/top.jsp" %>
 
 <div id="reservationTable-allwrap">
-	<div class="reservationTableText">예약</div>
+	<div class="reservationTableText">예약 변경</div>
 	<div id="reservationTable-wrap">
-	<form class="reservation-form" id="reservationform" name="reservationform" method="post" accept-charset="utf-8">
+	<form class="reservation-form" id="reservationform" name="reservationform" role="form" method="post" accept-charset="utf-8">
 	<table class="reservationTable">
-		<tr><td class="reservationTableTextBig" colspan="2">주소</td></tr>
-		<tr><td colspan="2" style="border-bottom: 2px solid #dddddd;"><ul class="reservationTableTextSmall"><li>인천광역시 미추홀구 인하로 100</li></ul></td></tr>
-		<tr><td class="reservationTableTextBig" colspan="2">영업시간</td></tr>
-		<tr><td colspan="2" style="border-bottom: 2px solid #dddddd;"><ul class="reservationTableTextSmall">
-					<li>화요일 ~ 토요일 16 : 00 ~ 23 : 00</li>
-					<li>※ 매주 일요일, 월요일은 휴무입니다.</li>
-				</ul>
-			</td>
-		</tr>
-		<tr><td class="reservationTableTextBig" colspan="2">예약안내</td></tr>
-		<tr><td colspan="2" style="border-bottom: 2px solid #dddddd;"><ul class="reservationTableTextSmall">
-					<li>※ 모든 메뉴는 1인분 기준입니다. 주문하실 때 인원수와 주문수량을 같게 해주세요.</li>
-					<li>※ 20인 이상 단체의 경우, 홀 대관으로 예약됩니다.</li>
-					<li>※ 특정 식재료에 알러지가 있으신 분은 미리 말씀해 주시면 재료나 찬품을 바꾸어 드릴 수 있습니다.</li>
-					<li>※ No Show(예약을 하고 나타나지 않는 행위)방지를 위해 1인 기준 50,000원의 예약금을 받고 있습니다</li>
-					<li>※ 3일 전 취소까지는 패널티가 없으나 2일 전 취소는 예약금의 50% 패널티 적용, 1일 전 및 당일 취소는 예약금의 100% 패널티를 적용합니다.</li>
-					<li>※ 예약은 먼저 신청된 순서대로 확정됩니다.</li>
-				 </ul>
-			</td>
-		</tr>
 		<tr><td class="reservationTableTextSmall" colspan="2" style="color: black; font-weight: bold; padding: 20px 0 15px 0;">(<span class="essential">*</span> 표시는 필수입력 사항으로 반드시 기재해야 하는 항목)</td></tr>
-		<tr><td class="reservationTitle">예약자명 <span class="essential">*</span></td><td><input class="reservationInput" name="name" type="text" required></td></tr>
-		<tr><td class="reservationTitle">연락처 <span class="essential">*</span></td><td><input class="reservationInput" name="phone" placeholder="'-'를 제외하고 입력해주세요" type="text" required></td></tr>
+		<tr><td class="reservationTitle">예약자명 <span class="essential">*</span></td><td><input class="reservationInput" name="name" type="text" value="${vo.name}" readonly="readonly" required></td></tr>
+		<tr><td class="reservationTitle">연락처 <span class="essential">*</span></td><td><input class="reservationInput" name="phone" placeholder="'-'를 제외하고 입력해주세요" value="${vo.phone}" type="text" required></td></tr>
 		<tr style="border-bottom: 2px solid #dddddd;"><td class="reservationTitle" style="padding-bottom: 15px;">이메일 <span class="essential">*</span></td><td style="padding-bottom: 15px;"><input class="reservationInput" id="user-email" name="user-email" type="text" required><div id="at" style="display: inline-block"> @ </div> 
 				<select id="domain" name="domain" onChange="direct(this)" required>
 					<option value="">도메인 선택</option>
@@ -216,28 +196,29 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
 			</td>
 		</tr>
 		<tr style="border-bottom: 2px solid #dddddd;"><td class="reservationTitle" style="padding-bottom: 15px;">메뉴 <span class="essential">*</span></td><td style="padding-bottom: 15px;">
-					<select id="courseselect" name="courseselect" onchange="courseChange(this)" required>
+					<select id="courseselect" name="courseselect" onclick="courseChange(this)" required>
 						<option value="" selected>코스선택</option>
 						<option value="course">만찬(풀코스)</option>
 						<option value="set">정찬(세트메뉴)</option>
 					</select>
-					
+
 					<select id="menuselect" name="menuselect">
 						<option value="">메뉴선택</option>
 					</select> 
 			</td>
 		</tr>
-		<tr style="border-bottom: 2px solid"><td class="reservationTitle" style="padding-bottom: 15px;">특별요청사항</td><td style="padding: 15px 0 15px 0;"><textarea class="message" placeholder="알러지나 특이사항 및 다른 질문이나 특별히 요청하실 내용이 있으시면 자세히 써주세요." name="message"></textarea>
+		<tr style="border-bottom: 2px solid"><td class="reservationTitle" style="padding-bottom: 15px;">특별요청사항</td><td style="padding: 15px 0 15px 0;"><textarea class="message" placeholder="알러지나 특이사항 및 다른 질문이나 특별히 요청하실 내용이 있으시면 자세히 써주세요." name="message">${vo.message}</textarea>
 			<input type="hidden" name="email" value="" >
 			<input type="hidden" name="rsrvDate" value="" >
 			<input type="hidden" name="rsrvCode" value="" >
 			<input type="hidden" name="CodeName" value="" >
 			<input type="hidden" name="MenuCodeName" value="" >
+			<input type="hidden" name="result" value="${result}" >
 			</td>
 		</tr>
 	</table>
 	<div id="btn-wrap">
-		<input type="submit" value="예약" class="reservationBtn">
+		<input type="submit" value="수정" class="reservationModifyBtn">
 		<input type="button" value="취소" class="cancleBtn" onClick="history.back(-1)">
 	</div>
 	</form>
@@ -245,6 +226,58 @@ html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:activ
 </div>
 
 <script type="text/javascript">
+//페이지가 모두 준비되면 함수 실행, 사용자가 예약한 정보 띄우기
+$(document).ready(function(){
+	//이메일 select
+	emailsep = ("${vo.email}").split("@");
+	$("input[name=user-email]").attr("value", emailsep[0]);
+	$("#domain").val(emailsep[1]).prop("selected", true);
+	
+	//날짜와 시간 select
+	datetimesep = ("${datetime}").split(" ");
+	$("input[name=publeYear]").attr("value", datetimesep[0]);
+	$("#timeselect").val(datetimesep[1]).prop("selected", true);
+	
+	//예약 인원 select
+	$("#Pnum").val("${vo.pnum}").prop("selected", true);
+	
+	//코스 select
+	$("#courseselect").val("${vo.code}").prop("selected", true);
+	
+	//메뉴 select
+	$("#menuselect").append("<option value='${vo.menuCode}'>${vo.menuCodeName}</option>");
+	$("#menuselect").val("${vo.menuCode}").prop("selected", true);
+	
+	var formObj = $("form[role='form']");
+	
+	//수정 버튼을 누른 경우
+   	$(".reservationModifyBtn").on("click", function(){
+   		//alert창 띄우기
+   		swal({
+   			title: "정말 예약을 수정하시겠습니까?",
+   			text: "",
+   			icon: "info",
+   			closeOnClickOutside: false, //alert창을 제외하고 클릭시 창 닫히지 않게 함.
+   			buttons: {
+   				confirm: {
+   					text: "예",
+   					value: true,
+   					className: "Cancle-YesBtn"
+   				},
+   				cancle: {
+   					text:"아니오",
+   					value: false,
+   					className: "Cancle-NoBtn"
+   				}
+   			}
+   		}).then((resultBtn) => { //button의 value를 resultBtn로 받아 사용.
+   			if(resultBtn){ //'예'를 클릭한 경우, 예약 수정 실행
+   		      	formObj.submit();
+   			}
+   		});
+   	});
+	
+});
 //도메인 직접입력 눌렀을 경우 직접입력 input박스 보이게 하기
 function direct(e){
 	$("#domain option:selected").each(function () { 
@@ -257,7 +290,6 @@ function direct(e){
           	$("#selBoxDirect").hide(); //input박스 숨기기
           	$("#selBoxDirect").attr("disabled", true); //비활성화
           	$("#domain").attr("disabled", false); //비활성화
-          	//emailPlusDomain();
       	} 
 	});
 }
@@ -317,16 +349,8 @@ document.getElementById("reservationform").onsubmit=function(){
 	datetime = $("#publeYear").val() + " " + $("#timeselect").val();
 	$("input[name=rsrvDate]").attr("value", datetime); //name이 rsrvDate인 input에 datetime을 value로 지정
 	
-	//예약코드(6자리 난수) 생성
-	charList = "012345678ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	result = "";
-	num = 6;
-	charListLen = charList.length;
-	for(i=0; i<num; i++){ //난수 생성 for문
-		result += charList.charAt(Math.floor(Math.random() * charListLen));
-	}
-	
-	$("input[name=rsrvCode]").attr("value", result); //name이 rsrvCode인 input에 result을 value로 지정
+	//예약코드 보내기
+	$("input[name=rsrvCode]").attr("value", "${vo.rsrvCode}"); //name이 rsrvCode인 input에 result을 value로 지정
 	
 	//사용자 이메일과 도메인 합치기
 	if($("#domain option:selected").val() == "direct"){ //직접입력을 선택한 경우
@@ -341,7 +365,7 @@ document.getElementById("reservationform").onsubmit=function(){
 	total = email + at + domain; //합치기
 	$("input[name=email]").attr("value", total); //name이 email인 input에 total을 value로 지정
 	
-	//ConeName, MenuCodeName보내기
+	//CodeName, MenuCodeName보내기
 	CodeName = $("#courseselect option:selected").text();
 	MenuCodeName = $("#menuselect option:selected").text();
 	$("input[name=CodeName]").attr("value", CodeName);

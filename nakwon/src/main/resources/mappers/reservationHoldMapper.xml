@@ -25,11 +25,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>
 
+	<!-- 페이징 목록부분 -->
 	<select id="listCriteria" resultType="com.nakwon.domain.ReservationHoldVO">
 	<![CDATA[ 
 	select * 
 	from ReservationHold
-	order by RsrvCode limit #{pageStart}, #{perPageNum} 
+	order by RsrvCode asc limit #{pageStart}, #{perPageNum} 
 	]]>
 	</select>
 	
@@ -50,5 +51,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	Pnum =#{Pnum}, Message =#{Message}, Code =#{Code}, MenuCode =#{MenuCode}, MenuCodeName =#{MenuCodeName}
  	where RsrvCode = #{RsrvCode}
  	</update>
+ 	
+ 	<!-- 관리자 예약 조회: 예약코드가 일치하는 ReservationHoldVO(resultType) 반환 -->
+ 	<select id="reservationRead" resultType="com.nakwon.domain.ReservationHoldVO">
+ 	select *
+ 	from ReservationHold 
+ 	where RsrvCode = #{RsrvCode}
+ 	</select>
  	
 </mapper>

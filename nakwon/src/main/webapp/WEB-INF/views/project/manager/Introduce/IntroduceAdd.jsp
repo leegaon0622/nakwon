@@ -75,7 +75,6 @@ $(document).ready(function() {
 		$("#add_introduce").show();
 	});
 });
-
 	var target=document.querySelectorAll('.btn_add');
 	var targetID;
 	var btnPopClose = document.querySelectorAll('.introduce .btn_close');
@@ -109,4 +108,4 @@ $(document).ready(function() {
 	
 </script>
 </body>
-</html> 
+</html>

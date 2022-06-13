@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Main2</title>
+<title>낙원: 메뉴</title>
 
 <style>
 	/*폰트*/

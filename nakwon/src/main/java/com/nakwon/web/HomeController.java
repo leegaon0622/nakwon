@@ -113,6 +113,19 @@ public class HomeController {
 	    model.addAttribute("list", introduceservice.introduceListAll());
 	    return "redirect:/managerMain";
 	}
+	
+	// 소개 페이지 mapping
+		@RequestMapping(value = "/introduce", method = RequestMethod.GET)
+		public String introduce(IntroduceVO vo, Model model, HttpServletRequest request) throws Exception {
+
+			ObjectMapper objm = new ObjectMapper();
+				
+			List<IntroduceVO> introducelistAll = introduceservice.introduceListAll();
+			String introduceListAll = objm.writeValueAsString(introducelistAll);
+			model.addAttribute("introduceListAll",introduceListAll);
+			
+			return "project/Introduce/introduce";
+		}
 	   
 	// 메뉴등록
 	@RequestMapping(value = "/menucheck", method = RequestMethod.POST)
